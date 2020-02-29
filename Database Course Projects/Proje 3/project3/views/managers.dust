@@ -1,0 +1,9 @@
+{>"layout" /}
+
+{<body}
+	<h1>MANAGERS</<h1>
+	{#managers}
+		<h3><b>Username:</b> {username}</h3>
+		<br>
+	{/managers}
+{/body}

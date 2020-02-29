@@ -1,0 +1,9 @@
+{>"layout" /}
+
+{<body}
+	<h1>CARETAKERS</<h1>
+	{#caretakers}
+		<h3><b>ID:</b> {caretaker} <b>Number of Animals:</b> {amount}</h3>
+		<br>
+	{/caretakers}
+{/body}

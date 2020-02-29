@@ -1,0 +1,557 @@
+{>"layout" /}
+
+{<body}
+<div class="text-center">
+	<h2 align="center">Shelter Manager</h2>
+	<div class="btn-group-center">
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#addManagerFormModal">Add</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#updateManagerFormModal">Update</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#deleteManagerFormModal">Delete</button>
+		<a class="btn btn-warning button-width" href="/view_managers" role="button">View All</a>
+	</div>
+
+	<h2 align="center">Caretaker</h2>
+	<div class="btn-group-center">
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#addCaretakerFormModal">Add</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#updateCaretakerFormModal">Update</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#deleteCaretakerFormModal">Delete</button>
+		<a class="btn btn-warning button-width" href="/view_caretakers" role="button">View All</a>
+	</div>
+	<div class="btn-group-center">
+	  	<a class="btn btn-success button-width btn-space" href="/rank_caretakers" role="button">Ranking</a>
+	</div>
+
+	<h2 align="center">Animal</h2>
+	<div class="btn-group-center">
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#addAnimalFormModal">Add</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#updateAnimalFormModal">Update</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#deleteAnimalFormModal">Delete</button>
+		<a class="btn btn-warning button-width" href="/view_animals" role="button">View All</a>
+	</div>
+	<div class="btn-group-center">
+	  	<button type="button" class="btn btn-success button-width btn-space" data-toggle="modal" data-target="#searchByCaretakerFormModal">Search by Caretaker</button>
+	  	<button type="button" class="btn btn-success button-width btn-space" data-toggle="modal" data-target="#searchBySponsorFormModal">Search by Sponsor</button>
+	  	<button type="button" class="btn btn-success button-width btn-space" data-toggle="modal" data-target="#searchBySpeciesFormModal">Search by Species</button>
+	</div>
+
+	<div class="btn-group-center">
+	  	<a class="btn btn-danger button-width btn-space" href="/animals_without_sponsor" role="button">Animals Without Sponsor</a>
+	</div>
+
+	<h2 align="center">Sponsor</h2>
+	<div class="btn-group-center">
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#addSponsorFormModal">Add</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#updateSponsorFormModal">Update</button>
+	  	<button type="button" class="btn btn-primary button-width" data-toggle="modal" data-target="#deleteSponsorFormModal">Delete</button>
+		<a class="btn btn-warning button-width" href="/view_sponsors" role="button">View All</a>
+	</div>
+</div>
+
+<!-- Add Manager Modal -->
+<div class="modal fade" id="addManagerFormModal" tabindex="-1" role="dialog" aria-labelledby="addManagerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/add_manager">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Add New Shelter Manager</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Username</label>
+	        	<input type="text" class="form-control" name="username">
+	        </div>
+	        <div class="form-group">
+	        	<label>Password</label>
+	        	<input type="password" class="form-control" name="password">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Update Manager Modal -->
+<div class="modal fade" id="updateManagerFormModal" tabindex="-1" role="dialog" aria-labelledby="updateManagerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/update_manager">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Update Shelter Manager</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Username of the manager you want to update.</label>
+	        	<input type="text" class="form-control" name="old_username">
+	        </div>
+	        <div class="form-group">
+	        	<label>New username</label>
+	        	<input type="text" class="form-control" name="new_username">
+	        </div>
+	        <div class="form-group">
+	        	<label>New password</label>
+	        	<input type="text" class="form-control" name="new_password">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Manager Modal -->
+<div class="modal fade" id="deleteManagerFormModal" tabindex="-1" role="dialog" aria-labelledby="deleteManagerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/delete_manager">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Delete Shelter Manager</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Username of the manager you want to delete.</label>
+	        	<input type="text" class="form-control" name="username">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-danger" value="Delete">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Add Caretaker Modal -->
+<div class="modal fade" id="addCaretakerFormModal" tabindex="-1" role="dialog" aria-labelledby="addCaretakerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/add_caretaker">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Add New Caretaker</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Name</label>
+	        	<input type="text" class="form-control" name="name">
+	        </div>
+	        <div class="form-group">
+	        	<label>Surname</label>
+	        	<input type="text" class="form-control" name="surname">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Update Caretaker Modal -->
+<div class="modal fade" id="updateCaretakerFormModal" tabindex="-1" role="dialog" aria-labelledby="updateCaretakerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/update_caretaker">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Update Caretaker</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>ID of the caretaker you want to update.</label>
+	        	<input type="number" class="form-control" name="id">
+	        </div>
+	        <div class="form-group">
+	        	<label>New name</label>
+	        	<input type="text" class="form-control" name="new_name">
+	        </div>
+	        <div class="form-group">
+	        	<label>New surname</label>
+	        	<input type="text" class="form-control" name="new_surname">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Caretaker Modal -->
+<div class="modal fade" id="deleteCaretakerFormModal" tabindex="-1" role="dialog" aria-labelledby="deleteCaretakerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/delete_caretaker">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Delete Caretaker</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>ID of the caretaker you want to delete.</label>
+	        	<input type="number" class="form-control" name="id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-danger" value="Delete">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Add Animal Modal -->
+<div class="modal fade" id="addAnimalFormModal" tabindex="-1" role="dialog" aria-labelledby="addAnimalFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/add_animal">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Add New Animal</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Name</label>
+	        	<input type="text" class="form-control" name="name">
+	        </div>
+	        <div class="form-group">
+	        	<label>Age</label>
+	        	<input type="number" class="form-control" name="age">
+	        </div>
+	        <div class="form-group">
+	        	<label>Species</label>
+	        	<input type="text" class="form-control" name="species">
+	        </div>
+	        <div class="form-group">
+	        	<label>ID of the Sponsor</label>
+	        	<input type="number" class="form-control" name="sponsor_id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Update Animal Modal -->
+<div class="modal fade" id="updateAnimalFormModal" tabindex="-1" role="dialog" aria-labelledby="updateAnimalFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/update_animal">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Update Animal</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>ID of the animal you want to update.</label>
+	        	<input type="number" class="form-control" name="id">
+	        </div>
+	        <div class="form-group">
+	        	<label>New name</label>
+	        	<input type="text" class="form-control" name="new_name">
+	        </div>
+	        <div class="form-group">
+	        	<label>New age</label>
+	        	<input type="number" class="form-control" name="new_age">
+	        </div>
+	        <div class="form-group">
+	        	<label>New species</label>
+	        	<input type="text" class="form-control" name="new_species">
+	        </div>
+	        <div class="form-group">
+	        	<label>New caretaker ID</label>
+	        	<input type="number" class="form-control" name="new_caretaker_id">
+	        </div>
+	        <div class="form-group">
+	        	<label>New sponsor ID</label>
+	        	<input type="number" class="form-control" name="new_sponsor_id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Animal Modal -->
+<div class="modal fade" id="deleteAnimalFormModal" tabindex="-1" role="dialog" aria-labelledby="deleteAnimalFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/delete_animal">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Delete Animal</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>ID of the animal you want to delete.</label>
+	        	<input type="number" class="form-control" name="id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-danger" value="Delete">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Add Sponsor Modal -->
+<div class="modal fade" id="addSponsorFormModal" tabindex="-1" role="dialog" aria-labelledby="addSponsorFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/add_sponsor">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Add New Sponsor</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Name</label>
+	        	<input type="text" class="form-control" name="name">
+	        </div>
+	        <div class="form-group">
+	        	<label>Surname</label>
+	        	<input type="text" class="form-control" name="surname">
+	        </div>
+	         <div class="form-group">
+	        	<label>Phone Number</label>
+	        	<input type="text" class="form-control" name="phone">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Update Sponsor Modal -->
+<div class="modal fade" id="updateSponsorFormModal" tabindex="-1" role="dialog" aria-labelledby="updateSponsorFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/update_sponsor">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Update Sponsor</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>ID of the sponsor you want to update.</label>
+	        	<input type="number" class="form-control" name="id">
+	        </div>
+	        <div class="form-group">
+	        	<label>New name</label>
+	        	<input type="text" class="form-control" name="new_name">
+	        </div>
+	        <div class="form-group">
+	        	<label>New surname</label>
+	        	<input type="text" class="form-control" name="new_surname">
+	        </div>
+	        <div class="form-group">
+	        	<label>New phone</label>
+	        	<input type="text" class="form-control" name="new_phone">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Save">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Sponsor Modal -->
+<div class="modal fade" id="deleteSponsorFormModal" tabindex="-1" role="dialog" aria-labelledby="deleteSponsorFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/delete_sponsor">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Delete Sponsor</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>ID of the sponsor you want to delete.</label>
+	        	<input type="number" class="form-control" name="id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-danger" value="Delete">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Search By Caretaker Modal -->
+<div class="modal fade" id="searchByCaretakerFormModal" tabindex="-1" role="dialog" aria-labelledby="searchByCaretakerFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/search_by_caretaker">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Search by Caretaker</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Please enter a caretaker ID</label>
+	        	<input type="text" class="form-control" name="caretaker_id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Search">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Search By Sponsor Modal -->
+<div class="modal fade" id="searchBySponsorFormModal" tabindex="-1" role="dialog" aria-labelledby="searchBySponsorFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/search_by_sponsor">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Search by Sponsor</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Please enter a sponsor ID.</label>
+	        	<input type="text" class="form-control" name="sponsor_id">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Search">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Search By Species Modal -->
+<div class="modal fade" id="searchBySpeciesFormModal" tabindex="-1" role="dialog" aria-labelledby="searchBySpeciesFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<form method="post" action="/search_by_species">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Search by Species</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<label>Please enter a species.</label>
+	        	<input type="text" class="form-control" name="species">
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input type="submit" class="btn btn-primary" value="Search">
+	      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+{/body}

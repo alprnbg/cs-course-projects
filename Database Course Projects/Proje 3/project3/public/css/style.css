@@ -1,0 +1,16 @@
+body{
+	margin-top: 10vh;
+	background: #f9f9f9;
+}
+
+h2{
+	color: blue;
+	margin-top: 6vh;}
+
+.button-width {
+	width: 15vw !important;
+}
+
+.btn-space {
+    margin-top: 0.5vw;
+}
